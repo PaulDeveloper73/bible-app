@@ -1,0 +1,17 @@
+Important when testing with VS Code Live Server:
+
+The default frontend API address is: apiBaseUrl: '/api/bible/v1',
+
+This works when your frontend and proxy share the same origin. When Live Server runs separately on port 5500, change it to: apiBaseUrl: 'http://localhost:3000/api/bible/v1',
+
+#start backend
+node bible-api-proxy.js
+
+chekc: node --check bible-api-proxy.js
+node --check bible-app.js
+
+test backend: http://localhost:3000/health
+
+One important production distinction: This provides the Bible API connection and browser-side functionality, but it is not yet a complete multi-user SaaS backend. Prayer journals, bookmarks and reading history currently live in the user's browser. Real accounts, PostgreSQL synchronization, backups, server-side push notifications, monitoring and deployment security still need implementation.
+
+Your next major upgrade should be PostgreSQL + authentication + cloud synchronization, so readers can access their Bible reading progress, prayer requests and saved Scriptures across mobile phones, tablets and desktop computers.
