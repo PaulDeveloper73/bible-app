@@ -1,0 +1,2469 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#140a05" />
+    <meta
+      name="description"
+      content="A Scripture reading, Bible study, devotion, prayer and personal journal space."
+    />
+    <title>Selah — Bible, Prayer & Devotion</title>
+
+    <!-- Tailwind CSS v3 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bible: {
+                brown: "#4c3123",
+                deep: "#140a05",
+                soft: "#714633",
+                orange: "#f3ad02",
+                cream: "#e1d1be",
+                paper: "#fff9ef",
+                ink: "#30211b",
+                muted: "#76675e",
+                line: "#eadccd",
+              },
+            },
+            fontFamily: {
+              sans: ["Plus Jakarta Sans", "Avenir", "sans-serif"],
+              serif: ["Cormorant Garamond", "Georgia", "serif"],
+            },
+            boxShadow: {
+              soft: "0 14px 34px rgba(73, 39, 25, 0.07)",
+              lift: "0 20px 55px rgba(39, 20, 10, 0.13)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      :root {
+        --brown: #4c3123;
+        --brown-deep: #140a05;
+        --brown-soft: #714633;
+        --orange: #f3ad02;
+        --cream: #e1d1be;
+        --cream-2: #fff1df;
+        --paper: #fff9ef;
+        --ink: #30211b;
+        --muted: #76675e;
+        --line: #eadccd;
+        --white: #ffffff;
+        --shadow: 0 14px 34px rgba(73, 39, 25, 0.07);
+        --radius: 17px;
+        --max: 1720px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--ink);
+        background: #faf8f5;
+        font-family: Avenir, "Plus Jakarta Sans", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+      }
+      button,
+      select {
+        cursor: pointer;
+      }
+      button:focus-visible,
+      a:focus-visible,
+      input:focus-visible,
+      select:focus-visible,
+      textarea:focus-visible {
+        outline: 3px solid rgba(243, 173, 2, 0.55);
+        outline-offset: 2px;
+      }
+      .font-display {
+        font-family: "Cormorant Garamond", Georgia, serif;
+      }
+      .app-shell {
+        max-width: var(--max);
+        margin: 0 auto;
+      }
+      .surface {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+      .surface-cream {
+        background: var(--cream-2);
+        border: 1px solid #ead8c4;
+        border-radius: var(--radius);
+      }
+      .primary-btn {
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        padding: 0 20px;
+        color: #fdd9a3;
+        background: var(--brown);
+        border: 1px solid var(--brown);
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 800;
+        transition:
+          transform 0.18s ease,
+          background 0.18s ease,
+          box-shadow 0.18s ease;
+      }
+      .primary-btn:hover {
+        background: #5c3b2a;
+        transform: translateY(-1px);
+        box-shadow: 0 8px 18px rgba(76, 49, 35, 0.16);
+      }
+      .secondary-btn {
+        min-height: 46px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 0 18px;
+        color: #fff9eb;
+        background: var(--brown-deep);
+        border: 1px solid var(--brown);
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 700;
+        transition:
+          background 0.18s ease,
+          transform 0.18s ease;
+      }
+      .secondary-btn:hover {
+        background: var(--brown);
+        transform: translateY(-1px);
+      }
+      .quiet-btn {
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        padding: 0 13px;
+        color: var(--brown);
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        transition:
+          background 0.18s ease,
+          border-color 0.18s ease;
+      }
+      .quiet-btn:hover {
+        background: var(--cream-2);
+        border-color: #c9ad92;
+      }
+      .search-field {
+        width: 100%;
+        min-height: 48px;
+        color: var(--ink);
+        background: var(--cream-2);
+        border: 1px solid #c35a1a;
+        border-radius: 12px;
+        padding: 0 15px 0 44px;
+      }
+      .input-field {
+        width: 100%;
+        min-height: 46px;
+        color: var(--ink);
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 11px;
+        padding: 0 13px;
+      }
+      .textarea-field {
+        width: 100%;
+        min-height: 118px;
+        color: var(--ink);
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 13px 14px;
+        resize: vertical;
+      }
+      .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        min-height: 46px;
+        padding: 0 13px;
+        color: #dfd0c3;
+        border-radius: 11px;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        transition:
+          color 0.18s ease,
+          background 0.18s ease;
+      }
+      .nav-link:hover,
+      .nav-link.active {
+        color: #fff3df;
+        background: rgba(255, 255, 255, 0.11);
+      }
+      .nav-link.active {
+        box-shadow: inset 3px 0 #f3ad02;
+      }
+      .nav-section-label {
+        margin: 25px 13px 8px;
+        color: #a99585;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+      .progress-track {
+        height: 7px;
+        overflow: hidden;
+        background: #eaded1;
+        border-radius: 99px;
+      }
+      .progress-fill {
+        height: 100%;
+        background: var(--orange);
+        border-radius: inherit;
+      }
+      .verse-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 25px;
+        height: 25px;
+        margin-right: 8px;
+        color: #8a624a;
+        background: #f7eee5;
+        border-radius: 50%;
+        font-size: 10px;
+        font-weight: 800;
+        vertical-align: middle;
+      }
+      .verse-row {
+        padding: 13px 12px;
+        border-radius: 12px;
+        transition: background 0.18s ease;
+      }
+      .verse-row:hover {
+        background: #fff8ef;
+      }
+      .verse-row.is-highlighted {
+        background: #fff2dc;
+        border: 1px solid #f0d7aa;
+      }
+      .icon-btn {
+        width: 39px;
+        height: 39px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--brown);
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        transition:
+          background 0.18s ease,
+          border-color 0.18s ease;
+      }
+      .icon-btn:hover {
+        background: var(--cream-2);
+        border-color: #c9ad92;
+      }
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        color: #79543e;
+        background: #f8eee2;
+        border: 1px solid #efdfcc;
+        border-radius: 999px;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+      }
+      .hero-pattern {
+        background:
+          radial-gradient(
+            circle at 88% 15%,
+            rgba(243, 173, 2, 0.22),
+            transparent 20%
+          ),
+          radial-gradient(
+            circle at 70% 100%,
+            rgba(255, 249, 239, 0.1),
+            transparent 34%
+          ),
+          linear-gradient(125deg, #140a05 0%, #4c3123 62%, #714633 100%);
+      }
+      .hero-cross {
+        position: absolute;
+        right: 9%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 130px;
+        height: 170px;
+        opacity: 0.12;
+      }
+      .mobile-bottom-nav {
+        padding-bottom: max(9px, env(safe-area-inset-bottom));
+      }
+      .mobile-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        min-width: 0;
+        color: #8b786b;
+        font-size: 9px;
+        font-weight: 800;
+        text-decoration: none;
+      }
+      .mobile-nav-item.active {
+        color: var(--brown);
+      }
+      .mobile-nav-item.active svg {
+        color: #c35a1a;
+      }
+      .hide-scrollbar {
+        scrollbar-width: none;
+      }
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      @media (max-width: 1023px) {
+        body {
+          padding-bottom: 78px;
+        }
+      }
+      @media (max-width: 639px) {
+        .primary-btn {
+          min-height: 44px;
+          padding: 0 15px;
+        }
+        .surface,
+        .surface-cream {
+          border-radius: 14px;
+        }
+        .hero-cross {
+          right: -12px;
+          width: 100px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-shell min-h-screen lg:flex">
+      <!-- Desktop sidebar -->
+      <aside
+        class="hidden lg:flex lg:w-[258px] xl:w-[276px] lg:shrink-0 lg:flex-col lg:fixed lg:inset-y-0 lg:left-[max(0px,calc((100vw-1720px)/2))] lg:z-30 bg-bible-deep px-5 py-6 text-white"
+      >
+        <a
+          href="#today"
+          class="flex items-center gap-3 px-2 text-decoration-none"
+          aria-label="Selah home"
+        >
+          <span
+            class="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/15 bg-white/10 text-bible-orange"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              class="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              aria-hidden="true"
+            >
+              <path d="M12 3v18M5 9h14" stroke-linecap="round" />
+              <path
+                d="M7 5.5c1.8-1.1 3.5-1.1 5 0 1.5-1.1 3.2-1.1 5 0v13c-1.8-1.1-3.5-1.1-5 0-1.5-1.1-3.2-1.1-5 0z"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          <span>
+            <span
+              class="block font-serif text-[29px] font-semibold leading-none tracking-wide"
+              >selah<span class="text-bible-orange">.</span></span
+            >
+            <span
+              class="mt-1 block text-[9px] font-bold uppercase tracking-[.2em] text-[#bda995]"
+              >Scripture • Prayer • Growth</span
+            >
+          </span>
+        </a>
+
+        <div class="mt-9 rounded-2xl border border-white/10 bg-white/[.06] p-3">
+          <div
+            class="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-[#d7c4b2]"
+          >
+            <span>Your daily rhythm</span
+            ><span class="text-bible-orange">Day 08</span>
+          </div>
+          <div class="mt-3 flex items-end justify-between">
+            <div>
+              <p class="text-2xl font-extrabold">
+                8 <span class="text-xs font-semibold text-[#cbb9a8]">days</span>
+              </p>
+              <p class="mt-0.5 text-[10px] text-[#bda995]">
+                A growing habit of the Word
+              </p>
+            </div>
+            <span
+              class="mb-1 flex h-9 w-9 items-center justify-center rounded-full bg-bible-orange/15 text-bible-orange"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                class="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 3c1.2 3.2 5.8 4.4 5.8 9.1A5.8 5.8 0 1 1 6.2 12C6.2 8.5 9 6.5 12 3Z"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M12 13c1.4 1.1 1.8 2.1 1.8 3.2a1.8 1.8 0 1 1-3.6 0c0-1 .5-2 1.8-3.2Z"
+                />
+              </svg>
+            </span>
+          </div>
+          <div class="progress-track mt-3 bg-white/10">
+            <div class="progress-fill" style="width: 72%"></div>
+          </div>
+          <p class="mt-2 text-[10px] text-[#bda995]">
+            5 of 7 weekly reading days completed
+          </p>
+        </div>
+
+        <nav
+          class="mt-5 flex-1 overflow-y-auto custom-scrollbar"
+          aria-label="Main navigation"
+        >
+          <p class="nav-section-label">Your space</p>
+          <a class="nav-link active" href="#today" aria-current="page"
+            ><svg
+              viewBox="0 0 24 24"
+              class="h-[18px] w-[18px]"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <path
+                d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"
+                stroke-linejoin="round"
+              /></svg
+            >Today</a
+          >
+          <a class="nav-link" href="#read-bible"
+            ><svg
+              viewBox="0 0 24 24"
+              class="h-[18px] w-[18px]"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <path
+                d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5z"
+              />
+              <path
+                d="M4 17.5A2.5 2.5 0 0 1 6.5 15H20M8 7h8M8 10h6"
+                stroke-linecap="round"
+              /></svg
+            >Read the Bible</a
+          >
+          <a class="nav-link" href="#discover"
+            ><svg
+              viewBox="0 0 24 24"
+              class="h-[18px] w-[18px]"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-4-4M11 7v8M7 11h8" stroke-linecap="round" /></svg
+            >Discover Scripture</a
+          >
+          <a class="nav-link" href="#reading-plans"
+            ><svg
+              viewBox="0 0 24 24"
+              class="h-[18px] w-[18px]"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <rect x="4" y="4" width="16" height="17" rx="2" />
+              <path
+                d="M8 2v4M16 2v4M8 10h8M8 14h5"
+                stroke-linecap="round"
+              /></svg
+            >Reading plans</a
+          >
+
+          <p class="nav-section-label">Prayer & reflection</p>
+          <a class="nav-link" href="#prayer-room"
+            ><svg
+              viewBox="0 0 24 24"
+              class="h-[18px] w-[18px]"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <path
+                d="M12 21s-8-4.6-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.4-8 11-8 11Z"
+              />
+              <path d="M12 8v7M8.5 11.5h7" stroke-linecap="round" /></svg
+            >Prayer room</a
+          >
+          <a class="nav-link" href="#journal"
+            ><svg
+              viewBox="0 0 24 24"
+              class="h-[18px] w-[18px]"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <path
+                d="M5 3h14v18H5zM8 7h8M8 11h8M8 15h5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              /></svg
+            >My journal</a
+          >
+          <a class="nav-link" href="#saved"
+            ><svg
+              viewBox="0 0 24 24"
+              class="h-[18px] w-[18px]"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <path
+                d="M6 4.5A1.5 1.5 0 0 1 7.5 3h9A1.5 1.5 0 0 1 18 4.5V21l-6-4-6 4z"
+                stroke-linejoin="round"
+              /></svg
+            >Saved verses</a
+          >
+
+          <p class="nav-section-label">Personal</p>
+          <a class="nav-link" href="#profile"
+            ><svg
+              viewBox="0 0 24 24"
+              class="h-[18px] w-[18px]"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <circle cx="12" cy="8" r="3.5" />
+              <path d="M5 21a7 7 0 0 1 14 0" stroke-linecap="round" /></svg
+            >My profile</a
+          >
+          <a class="nav-link" href="#settings"
+            ><svg
+              viewBox="0 0 24 24"
+              class="h-[18px] w-[18px]"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="m19.4 15 .1.1 1.1 1.8-1.8 3.1-2.1-.5a8 8 0 0 1-1.7 1l-.4 2.1h-3.6l-.4-2.1a8 8 0 0 1-1.7-1l-2.1.5L5 16.9l1.1-1.8a8 8 0 0 1 0-2.1L5 11.2l1.8-3.1 2.1.5a8 8 0 0 1 1.7-1L11 5.5h3.6l.4 2.1a8 8 0 0 1 1.7 1l2.1-.5 1.8 3.1-1.1 1.8a8 8 0 0 1-.1 2Z"
+                stroke-linejoin="round"
+                transform="translate(-1 -1) scale(1.08)"
+              /></svg
+            >Settings</a
+          >
+        </nav>
+
+        <div class="mt-5 border-t border-white/10 pt-4">
+          <a
+            href="#profile"
+            class="flex items-center gap-3 rounded-xl p-2 hover:bg-white/10"
+          >
+            <span
+              class="flex h-10 w-10 items-center justify-center rounded-full bg-[#d8b99a] text-sm font-extrabold text-bible-deep"
+              >KP</span
+            >
+            <span class="min-w-0 flex-1"
+              ><span class="block truncate text-xs font-bold text-white"
+                >Welcome back</span
+              ><span class="mt-0.5 block truncate text-[10px] text-[#bda995]"
+                >Your personal Bible space</span
+              ></span
+            >
+            <svg
+              viewBox="0 0 24 24"
+              class="h-4 w-4 text-[#bda995]"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="m9 18 6-6-6-6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+        </div>
+      </aside>
+
+      <!-- Main application area -->
+      <div class="min-w-0 flex-1 lg:ml-[258px] xl:ml-[276px]">
+        <!-- Mobile top bar -->
+        <header
+          class="sticky top-0 z-40 border-b border-[#eadccd] bg-[#faf8f5]/95 backdrop-blur-xl lg:hidden"
+        >
+          <div class="flex h-[66px] items-center justify-between px-4 sm:px-6">
+            <a
+              href="#today"
+              class="flex items-center gap-2.5"
+              aria-label="Selah home"
+            >
+              <span
+                class="flex h-9 w-9 items-center justify-center rounded-xl bg-bible-deep text-bible-orange"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <path d="M12 3v18M5 9h14" stroke-linecap="round" />
+                  <path
+                    d="M7 5.5c1.8-1.1 3.5-1.1 5 0 1.5-1.1 3.2-1.1 5 0v13c-1.8-1.1-3.5-1.1-5 0-1.5-1.1-3.2-1.1-5 0z"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+              <span
+                class="font-serif text-[27px] font-semibold leading-none text-bible-deep"
+                >selah<span class="text-[#c35a1a]">.</span></span
+              >
+            </a>
+            <div class="flex items-center gap-2">
+              <span
+                class="hidden text-[11px] font-bold text-bible-muted sm:block"
+                >DAY 08 <span class="text-[#c35a1a]">•</span> KEEP GROWING</span
+              >
+              <button
+                class="icon-btn"
+                type="button"
+                data-action="open-notifications"
+                aria-label="Notifications"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-[18px] w-[18px]"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <path
+                    d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <button
+                class="flex h-9 w-9 items-center justify-center rounded-full bg-[#e8d6c2] text-[11px] font-extrabold text-bible-brown"
+                type="button"
+                data-action="open-profile"
+                aria-label="Open profile"
+              >
+                KP
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <main
+          id="today"
+          class="mx-auto w-full max-w-[1440px] px-4 pb-10 pt-5 sm:px-6 sm:pt-7 lg:px-8 lg:pt-8 xl:px-10"
+        >
+          <!-- Desktop top header -->
+          <div class="mb-7 hidden items-center justify-between gap-5 lg:flex">
+            <div>
+              <p
+                class="text-[11px] font-extrabold uppercase tracking-[.18em] text-[#a17c60]"
+              >
+                Your daily time with God
+              </p>
+              <h1
+                class="mt-1 font-serif text-[36px] font-semibold leading-none text-bible-deep"
+              >
+                A quiet place to grow.
+              </h1>
+            </div>
+            <div class="flex items-center gap-3">
+              <label class="relative block w-[290px]" for="global-search">
+                <svg
+                  viewBox="0 0 24 24"
+                  class="absolute left-4 top-1/2 h-[17px] w-[17px] -translate-y-1/2 text-[#8b7565]"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="m20 20-4-4" stroke-linecap="round" />
+                </svg>
+                <input
+                  id="global-search"
+                  class="search-field !min-h-[43px] !border-[#eadccd] !bg-white !text-xs"
+                  type="search"
+                  placeholder="Search verses, topics, books..."
+                  autocomplete="off"
+                  data-search="global"
+                />
+              </label>
+              <button
+                class="icon-btn relative"
+                type="button"
+                data-action="open-notifications"
+                aria-label="Notifications"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-[18px] w-[18px]"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <path
+                    d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  /></svg
+                ><span
+                  class="absolute right-1 top-1 h-2 w-2 rounded-full bg-[#c35a1a] ring-2 ring-white"
+                ></span>
+              </button>
+              <button
+                class="flex items-center gap-2 rounded-full border border-[#eadccd] bg-white py-1.5 pl-1.5 pr-3"
+                type="button"
+                data-action="open-profile"
+              >
+                <span
+                  class="flex h-8 w-8 items-center justify-center rounded-full bg-[#e8d6c2] text-[11px] font-extrabold text-bible-brown"
+                  >KP</span
+                ><span class="text-xs font-bold text-bible-ink">My space</span
+                ><svg
+                  viewBox="0 0 24 24"
+                  class="h-3.5 w-3.5 text-bible-muted"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="m7 10 5 5 5-5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Mobile greeting -->
+          <div class="mb-5 lg:hidden">
+            <p
+              class="text-[10px] font-extrabold uppercase tracking-[.17em] text-[#a17c60]"
+            >
+              Friday, November 20, 2026
+            </p>
+            <h1
+              class="mt-1 font-serif text-[32px] font-semibold leading-tight text-bible-deep sm:text-[36px]"
+            >
+              Good day. Make room for the Word.
+            </h1>
+            <p class="mt-1 text-xs leading-5 text-bible-muted">
+              A little time in Scripture can shape your whole day.
+            </p>
+          </div>
+
+          <!-- Daily hero -->
+          <section
+            class="hero-pattern relative isolate overflow-hidden rounded-[22px] px-5 py-6 text-white shadow-lift sm:px-8 sm:py-8 lg:px-10 lg:py-9"
+            aria-labelledby="hero-title"
+          >
+            <svg
+              class="hero-cross"
+              viewBox="0 0 130 170"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M65 8v154M23 51h84"
+                stroke="#fff9ef"
+                stroke-width="17"
+                stroke-linecap="round"
+              />
+            </svg>
+            <div class="relative z-10 max-w-[720px]">
+              <div class="flex flex-wrap items-center gap-2">
+                <span
+                  class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-[9px] font-extrabold uppercase tracking-[.16em] text-[#ffe1ad]"
+                  ><span class="h-1.5 w-1.5 rounded-full bg-bible-orange"></span
+                  >Today's encouragement</span
+                >
+                <span class="text-[10px] font-semibold text-white/65"
+                  >• Friday, November 20, 2026</span
+                >
+              </div>
+              <h2
+                id="hero-title"
+                class="mt-4 font-serif text-[32px] font-semibold leading-[1.04] sm:text-[42px] lg:text-[48px]"
+              >
+                Be still. Be rooted. Be strengthened.
+              </h2>
+              <p
+                class="mt-3 max-w-[620px] text-[13px] leading-6 text-[#f5e8da] sm:text-sm"
+              >
+                Let God's Word become the steady place you return to—in every
+                season, every decision, and every new beginning.
+              </p>
+              <div class="mt-5 flex flex-wrap items-center gap-3">
+                <a
+                  href="#daily-verse"
+                  class="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-[#f3ad02] px-5 text-[12px] font-extrabold text-[#28160c] transition hover:bg-[#ffc23a]"
+                  >Read today's verse
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M5 12h14m-6-6 6 6-6 6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    /></svg
+                ></a>
+                <a
+                  href="#prayer-room"
+                  class="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-5 text-[12px] font-bold text-white transition hover:bg-white/15"
+                  >Enter prayer room</a
+                >
+              </div>
+            </div>
+            <div
+              class="relative z-10 mt-6 flex items-center gap-4 border-t border-white/15 pt-4 sm:absolute sm:bottom-8 sm:right-8 sm:mt-0 sm:border-0 sm:pt-0 lg:right-10"
+            >
+              <div class="flex -space-x-2">
+                <span
+                  class="h-7 w-7 rounded-full border-2 border-[#4c3123] bg-[#e4c4a5]"
+                ></span
+                ><span
+                  class="h-7 w-7 rounded-full border-2 border-[#4c3123] bg-[#bb9070]"
+                ></span
+                ><span
+                  class="h-7 w-7 rounded-full border-2 border-[#4c3123] bg-[#f1d9b5]"
+                ></span>
+              </div>
+              <p class="text-[10px] font-semibold text-white/70">
+                A daily rhythm, one day at a time
+              </p>
+            </div>
+          </section>
+
+          <!-- Daily summary cards -->
+          <section
+            class="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4"
+            aria-label="Your progress"
+          >
+            <article
+              class="surface flex min-w-0 items-center gap-3 p-3.5 sm:p-4"
+            >
+              <span
+                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#fff1dc] text-[#b66a1d]"
+                ><svg
+                  viewBox="0 0 24 24"
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <path
+                    d="M12 3c1.2 3.2 5.8 4.4 5.8 9.1A5.8 5.8 0 1 1 6.2 12C6.2 8.5 9 6.5 12 3Z"
+                    stroke-linejoin="round"
+                  /></svg
+              ></span>
+              <div class="min-w-0">
+                <p class="text-[10px] font-bold text-bible-muted">
+                  Reading streak
+                </p>
+                <p
+                  class="mt-0.5 text-lg font-extrabold leading-none text-bible-deep"
+                >
+                  8 days
+                </p>
+              </div>
+            </article>
+            <article
+              class="surface flex min-w-0 items-center gap-3 p-3.5 sm:p-4"
+            >
+              <span
+                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#f1e9df] text-bible-brown"
+                ><svg
+                  viewBox="0 0 24 24"
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <path
+                    d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5z"
+                  />
+                  <path d="M4 17.5A2.5 2.5 0 0 1 6.5 15H20" /></svg
+              ></span>
+              <div class="min-w-0">
+                <p class="text-[10px] font-bold text-bible-muted">
+                  Chapters read
+                </p>
+                <p
+                  class="mt-0.5 text-lg font-extrabold leading-none text-bible-deep"
+                >
+                  24
+                </p>
+              </div>
+            </article>
+            <article
+              class="surface flex min-w-0 items-center gap-3 p-3.5 sm:p-4"
+            >
+              <span
+                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#eaf0e5] text-[#58774c]"
+                ><svg
+                  viewBox="0 0 24 24"
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <path
+                    d="M12 21s-8-4.6-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.4-8 11-8 11Z"
+                  /></svg
+              ></span>
+              <div class="min-w-0">
+                <p class="text-[10px] font-bold text-bible-muted">
+                  Prayer entries
+                </p>
+                <p
+                  class="mt-0.5 text-lg font-extrabold leading-none text-bible-deep"
+                >
+                  12
+                </p>
+              </div>
+            </article>
+            <article
+              class="surface flex min-w-0 items-center gap-3 p-3.5 sm:p-4"
+            >
+              <span
+                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#f3eaf1] text-[#93618a]"
+                ><svg
+                  viewBox="0 0 24 24"
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <path
+                    d="M6 4.5A1.5 1.5 0 0 1 7.5 3h9A1.5 1.5 0 0 1 18 4.5V21l-6-4-6 4z"
+                    stroke-linejoin="round"
+                  /></svg
+              ></span>
+              <div class="min-w-0">
+                <p class="text-[10px] font-bold text-bible-muted">
+                  Saved verses
+                </p>
+                <p
+                  class="mt-0.5 text-lg font-extrabold leading-none text-bible-deep"
+                >
+                  18
+                </p>
+              </div>
+            </article>
+          </section>
+
+          <!-- Main content grid -->
+          <div
+            class="mt-7 grid grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1.65fr)_minmax(300px,.85fr)] xl:gap-7"
+          >
+            <div class="min-w-0 space-y-6">
+              <!-- Scripture search -->
+              <section
+                id="discover"
+                class="surface p-4 sm:p-5"
+                aria-labelledby="search-title"
+              >
+                <div
+                  class="mb-3 flex flex-wrap items-center justify-between gap-2"
+                >
+                  <div>
+                    <p
+                      class="text-[10px] font-extrabold uppercase tracking-[.15em] text-[#a17c60]"
+                    >
+                      Find what you need
+                    </p>
+                    <h2
+                      id="search-title"
+                      class="mt-1 text-base font-extrabold text-bible-deep"
+                    >
+                      Search the Scriptures
+                    </h2>
+                  </div>
+                  <span class="tag">Bible search</span>
+                </div>
+                <form
+                  id="scripture-search-form"
+                  action="#search-results"
+                  method="get"
+                  class="flex flex-col gap-2 sm:flex-row"
+                >
+                  <label
+                    class="relative min-w-0 flex-1"
+                    for="scripture-search-input"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      class="absolute left-4 top-1/2 h-[17px] w-[17px] -translate-y-1/2 text-[#8b7565]"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    >
+                      <circle cx="11" cy="11" r="7" />
+                      <path d="m20 20-4-4" stroke-linecap="round" />
+                    </svg>
+                    <input
+                      id="scripture-search-input"
+                      name="q"
+                      class="search-field"
+                      type="search"
+                      placeholder="Try ‘peace’, ‘Psalm 91’ or ‘John 3:16’"
+                      autocomplete="off"
+                      data-action="scripture-search"
+                    />
+                  </label>
+                  <button
+                    class="primary-btn w-full sm:w-auto"
+                    type="submit"
+                    data-action="submit-scripture-search"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      class="h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <circle cx="11" cy="11" r="7" />
+                      <path d="m20 20-4-4" stroke-linecap="round" /></svg
+                    >Search Bible
+                  </button>
+                </form>
+                <div class="mt-3 flex flex-wrap items-center gap-2">
+                  <span class="text-[10px] font-bold text-bible-muted"
+                    >Popular:</span
+                  ><button class="tag" type="button" data-search-term="faith">
+                    Faith</button
+                  ><button
+                    class="tag"
+                    type="button"
+                    data-search-term="protection"
+                  >
+                    Protection</button
+                  ><button class="tag" type="button" data-search-term="healing">
+                    Healing</button
+                  ><button class="tag" type="button" data-search-term="wisdom">
+                    Wisdom</button
+                  ><button class="tag" type="button" data-search-term="peace">
+                    Peace
+                  </button>
+                </div>
+                <div
+                  id="search-results"
+                  class="mt-4 hidden"
+                  aria-live="polite"
+                ></div>
+              </section>
+
+              <!-- Daily verse -->
+              <section
+                id="daily-verse"
+                class="surface overflow-hidden"
+                aria-labelledby="daily-verse-title"
+              >
+                <div
+                  class="flex flex-wrap items-center justify-between gap-3 border-b border-[#f0e6dc] px-4 py-4 sm:px-5"
+                >
+                  <div class="flex items-center gap-3">
+                    <span
+                      class="flex h-10 w-10 items-center justify-center rounded-xl bg-[#fff1dc] text-[#b66a1d]"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        class="h-5 w-5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                      >
+                        <path d="M12 3v18M5 9h14" stroke-linecap="round" />
+                        <path d="M6 5h12v15H6z" stroke-linejoin="round" /></svg
+                    ></span>
+                    <div>
+                      <p
+                        class="text-[10px] font-extrabold uppercase tracking-[.14em] text-[#a17c60]"
+                      >
+                        Pause and reflect
+                      </p>
+                      <h2
+                        id="daily-verse-title"
+                        class="text-base font-extrabold text-bible-deep"
+                      >
+                        Verse of the day
+                      </h2>
+                    </div>
+                  </div>
+                  <span class="tag"
+                    >KJV
+                    <span class="h-1 w-1 rounded-full bg-[#b58a68]"></span>
+                    Daily reading</span
+                  >
+                </div>
+                <div
+                  class="relative overflow-hidden bg-[#fff9f1] px-5 py-6 sm:px-7 sm:py-7"
+                >
+                  <span
+                    class="absolute -right-2 -top-8 font-serif text-[180px] leading-none text-[#eadccd]/50"
+                    aria-hidden="true"
+                    >“</span
+                  >
+                  <div class="relative z-10 max-w-[680px]">
+                    <p
+                      class="font-serif text-[25px] font-semibold leading-[1.38] text-bible-brown sm:text-[31px]"
+                    >
+                      He that dwelleth in the secret place of the most High
+                      shall abide under the shadow of the Almighty.
+                    </p>
+                    <p
+                      class="mt-4 text-xs font-extrabold uppercase tracking-[.13em] text-[#9c6943]"
+                    >
+                      Psalm 91:1 <span class="mx-1 text-[#c8a78b]">•</span> King
+                      James Version
+                    </p>
+                    <div class="mt-5 flex flex-wrap items-center gap-2">
+                      <button
+                        class="primary-btn"
+                        type="button"
+                        data-action="read-daily-verse"
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          class="h-4 w-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path
+                            d="M5 12h14m-6-6 6 6-6 6"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          /></svg
+                        >Read full chapter
+                      </button>
+                      <button
+                        class="quiet-btn"
+                        type="button"
+                        data-action="save-daily-verse"
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          class="h-4 w-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.8"
+                        >
+                          <path
+                            d="M6 4.5A1.5 1.5 0 0 1 7.5 3h9A1.5 1.5 0 0 1 18 4.5V21l-6-4-6 4z"
+                            stroke-linejoin="round"
+                          /></svg
+                        >Save verse
+                      </button>
+                      <button
+                        class="quiet-btn"
+                        type="button"
+                        data-action="share-daily-verse"
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          class="h-4 w-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.8"
+                        >
+                          <circle cx="18" cy="5" r="3" />
+                          <circle cx="6" cy="12" r="3" />
+                          <circle cx="18" cy="19" r="3" />
+                          <path d="m8.7 10.7 6.6-4.4M8.7 13.3l6.6 4.4" /></svg
+                        >Share
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="grid grid-cols-1 gap-3 px-4 py-4 sm:grid-cols-[1fr_auto] sm:items-center sm:px-5"
+                >
+                  <div>
+                    <p
+                      class="text-[10px] font-extrabold uppercase tracking-[.12em] text-[#a17c60]"
+                    >
+                      A thought to carry today
+                    </p>
+                    <p class="mt-1 text-xs leading-5 text-bible-muted">
+                      God's presence is not a place you visit once; it is a
+                      place of trust you can return to throughout the day.
+                    </p>
+                  </div>
+                  <a
+                    href="#journal"
+                    class="text-xs font-extrabold text-[#9a5a2f] hover:text-bible-deep"
+                    >Write a reflection <span aria-hidden="true">→</span></a
+                  >
+                </div>
+              </section>
+
+              <!-- Bible reader -->
+              <section
+                id="read-bible"
+                class="surface overflow-hidden"
+                aria-labelledby="reader-title"
+              >
+                <div
+                  class="flex flex-wrap items-center justify-between gap-3 border-b border-[#f0e6dc] px-4 py-4 sm:px-5"
+                >
+                  <div>
+                    <p
+                      class="text-[10px] font-extrabold uppercase tracking-[.14em] text-[#a17c60]"
+                    >
+                      Read at your pace
+                    </p>
+                    <h2
+                      id="reader-title"
+                      class="mt-1 text-base font-extrabold text-bible-deep"
+                    >
+                      Bible reader
+                    </h2>
+                  </div>
+                  <button
+                    class="quiet-btn"
+                    type="button"
+                    data-action="open-reader-settings"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      class="h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    >
+                      <path
+                        d="M4 7h16M4 17h16M8 4v6m8 4v6"
+                        stroke-linecap="round"
+                      /></svg
+                    >Reading options
+                  </button>
+                </div>
+                <div
+                  class="grid grid-cols-1 gap-2 bg-[#fffaf5] p-4 sm:grid-cols-[1.2fr_.7fr_1fr] sm:px-5"
+                >
+                  <label class="block"
+                    ><span
+                      class="mb-1.5 block text-[10px] font-extrabold uppercase tracking-wider text-bible-muted"
+                      >Bible translation</span
+                    ><select
+                      id="bible-translation"
+                      name="bibleId"
+                      class="input-field text-xs"
+                      data-control="translation"
+                    >
+                      <option value="a6aee10bb058511c-02" selected>
+                        Selected Bible • API.Bible
+                      </option>
+                      <option value="kjv">King James Version (KJV)</option>
+                      <option value="web">World English Bible (WEB)</option>
+                    </select></label
+                  >
+                  <label class="block"
+                    ><span
+                      class="mb-1.5 block text-[10px] font-extrabold uppercase tracking-wider text-bible-muted"
+                      >Book</span
+                    ><select
+                      id="bible-book"
+                      name="book"
+                      class="input-field text-xs"
+                      data-control="book"
+                    >
+                      <option value="PSA" selected>Psalms</option>
+                      <option value="GEN">Genesis</option>
+                      <option value="PRO">Proverbs</option>
+                      <option value="ISA">Isaiah</option>
+                      <option value="MAT">Matthew</option>
+                      <option value="JHN">John</option>
+                      <option value="ROM">Romans</option>
+                    </select></label
+                  >
+                  <label class="block"
+                    ><span
+                      class="mb-1.5 block text-[10px] font-extrabold uppercase tracking-wider text-bible-muted"
+                      >Chapter</span
+                    >
+                    <div class="flex gap-2">
+                      <select
+                        id="bible-chapter"
+                        name="chapter"
+                        class="input-field min-w-0 flex-1 text-xs"
+                        data-control="chapter"
+                      >
+                        <option value="91" selected>Chapter 91</option>
+                        <option value="23">Chapter 23</option>
+                        <option value="27">Chapter 27</option>
+                        <option value="121">Chapter 121</option></select
+                      ><button
+                        class="primary-btn !min-h-[46px] !rounded-xl !px-4"
+                        type="button"
+                        data-action="load-chapter"
+                      >
+                        Go
+                      </button>
+                    </div></label
+                  >
+                </div>
+                <div class="px-4 py-4 sm:px-6 sm:py-6">
+                  <div class="mb-5 flex items-center justify-between gap-3">
+                    <div>
+                      <h3
+                        id="reader-passage-title"
+                        class="font-serif text-[29px] font-semibold leading-none text-bible-deep"
+                      >
+                        Psalm 91
+                      </h3>
+                      <p
+                        class="mt-1.5 text-[10px] font-semibold text-bible-muted"
+                      >
+                        King James Version <span class="mx-1">•</span> Selected
+                        Bible ID: a6aee10bb058511c-02
+                      </p>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                      <button
+                        class="icon-btn"
+                        type="button"
+                        data-action="previous-chapter"
+                        aria-label="Previous chapter"
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          class="h-4 w-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path
+                            d="m15 18-6-6 6-6"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg></button
+                      ><button
+                        class="icon-btn"
+                        type="button"
+                        data-action="next-chapter"
+                        aria-label="Next chapter"
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          class="h-4 w-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path
+                            d="m9 18 6-6-6-6"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    id="bible-reading-content"
+                    class="space-y-1"
+                    aria-live="polite"
+                  >
+                    <article class="verse-row">
+                      <p
+                        class="font-serif text-[17px] leading-[1.8] text-[#463329]"
+                      >
+                        <span class="verse-number">1</span>He that dwelleth in
+                        the secret place of the most High shall abide under the
+                        shadow of the Almighty.
+                      </p>
+                      <div class="mt-2 flex flex-wrap items-center gap-2 pl-9">
+                        <button
+                          class="text-[10px] font-bold text-[#9a5a2f] hover:text-bible-deep"
+                          type="button"
+                          data-verse-action="save"
+                          data-verse="PSA.91.1"
+                        >
+                          Save</button
+                        ><button
+                          class="text-[10px] font-bold text-[#9a5a2f] hover:text-bible-deep"
+                          type="button"
+                          data-verse-action="pray"
+                          data-verse="PSA.91.1"
+                        >
+                          Pray this verse</button
+                        ><button
+                          class="text-[10px] font-bold text-[#9a5a2f] hover:text-bible-deep"
+                          type="button"
+                          data-verse-action="share"
+                          data-verse="PSA.91.1"
+                        >
+                          Share
+                        </button>
+                      </div>
+                    </article>
+                    <article class="verse-row is-highlighted">
+                      <p
+                        class="font-serif text-[17px] leading-[1.8] text-[#463329]"
+                      >
+                        <span class="verse-number">2</span>I will say of the
+                        LORD, He is my refuge and my fortress: my God; in him
+                        will I trust.
+                      </p>
+                      <div class="mt-2 flex flex-wrap items-center gap-2 pl-9">
+                        <button
+                          class="text-[10px] font-bold text-[#9a5a2f] hover:text-bible-deep"
+                          type="button"
+                          data-verse-action="save"
+                          data-verse="PSA.91.2"
+                        >
+                          Save</button
+                        ><button
+                          class="text-[10px] font-bold text-[#9a5a2f] hover:text-bible-deep"
+                          type="button"
+                          data-verse-action="pray"
+                          data-verse="PSA.91.2"
+                        >
+                          Pray this verse</button
+                        ><button
+                          class="text-[10px] font-bold text-[#9a5a2f] hover:text-bible-deep"
+                          type="button"
+                          data-verse-action="share"
+                          data-verse="PSA.91.2"
+                        >
+                          Share
+                        </button>
+                      </div>
+                    </article>
+                    <article class="verse-row">
+                      <p
+                        class="font-serif text-[17px] leading-[1.8] text-[#463329]"
+                      >
+                        <span class="verse-number">3</span>Surely he shall
+                        deliver thee from the snare of the fowler, and from the
+                        noisome pestilence.
+                      </p>
+                      <div class="mt-2 flex flex-wrap items-center gap-2 pl-9">
+                        <button
+                          class="text-[10px] font-bold text-[#9a5a2f] hover:text-bible-deep"
+                          type="button"
+                          data-verse-action="save"
+                          data-verse="PSA.91.3"
+                        >
+                          Save</button
+                        ><button
+                          class="text-[10px] font-bold text-[#9a5a2f] hover:text-bible-deep"
+                          type="button"
+                          data-verse-action="pray"
+                          data-verse="PSA.91.3"
+                        >
+                          Pray this verse</button
+                        ><button
+                          class="text-[10px] font-bold text-[#9a5a2f] hover:text-bible-deep"
+                          type="button"
+                          data-verse-action="share"
+                          data-verse="PSA.91.3"
+                        >
+                          Share
+                        </button>
+                      </div>
+                    </article>
+                    <article class="verse-row">
+                      <p
+                        class="font-serif text-[17px] leading-[1.8] text-[#463329]"
+                      >
+                        <span class="verse-number">4</span>He shall cover thee
+                        with his feathers, and under his wings shalt thou trust:
+                        his truth shall be thy shield and buckler.
+                      </p>
+                      <div class="mt-2 flex flex-wrap items-center gap-2 pl-9">
+                        <button
+                          class="text-[10px] font-bold text-[#9a5a2f] hover:text-bible-deep"
+                          type="button"
+                          data-verse-action="save"
+                          data-verse="PSA.91.4"
+                        >
+                          Save</button
+                        ><button
+                          class="text-[10px] font-bold text-[#9a5a2f] hover:text-bible-deep"
+                          type="button"
+                          data-verse-action="pray"
+                          data-verse="PSA.91.4"
+                        >
+                          Pray this verse</button
+                        ><button
+                          class="text-[10px] font-bold text-[#9a5a2f] hover:text-bible-deep"
+                          type="button"
+                          data-verse-action="share"
+                          data-verse="PSA.91.4"
+                        >
+                          Share
+                        </button>
+                      </div>
+                    </article>
+                    <article class="verse-row">
+                      <p
+                        class="font-serif text-[17px] leading-[1.8] text-[#463329]"
+                      >
+                        <span class="verse-number">5</span>Thou shalt not be
+                        afraid for the terror by night; nor for the arrow that
+                        flieth by day;
+                      </p>
+                      <div class="mt-2 flex flex-wrap items-center gap-2 pl-9">
+                        <button
+                          class="text-[10px] font-bold text-[#9a5a2f] hover:text-bible-deep"
+                          type="button"
+                          data-verse-action="save"
+                          data-verse="PSA.91.5"
+                        >
+                          Save</button
+                        ><button
+                          class="text-[10px] font-bold text-[#9a5a2f] hover:text-bible-deep"
+                          type="button"
+                          data-verse-action="pray"
+                          data-verse="PSA.91.5"
+                        >
+                          Pray this verse</button
+                        ><button
+                          class="text-[10px] font-bold text-[#9a5a2f] hover:text-bible-deep"
+                          type="button"
+                          data-verse-action="share"
+                          data-verse="PSA.91.5"
+                        >
+                          Share
+                        </button>
+                      </div>
+                    </article>
+                  </div>
+                  <div
+                    class="mt-5 flex flex-col gap-3 border-t border-[#f0e6dc] pt-4 sm:flex-row sm:items-center sm:justify-between"
+                  >
+                    <p class="text-[10px] leading-5 text-bible-muted">
+                      Showing a sample of the chapter. Load a chapter to
+                      retrieve its full text from API.Bible.
+                    </p>
+                    <button
+                      class="primary-btn w-full sm:w-auto"
+                      type="button"
+                      data-action="load-full-chapter"
+                    >
+                      Load full chapter
+                      <svg
+                        viewBox="0 0 24 24"
+                        class="h-4 w-4"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          d="M5 12h14m-6-6 6 6-6 6"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Prayer room -->
+              <section
+                id="prayer-room"
+                class="surface overflow-hidden"
+                aria-labelledby="prayer-title"
+              >
+                <div
+                  class="hero-pattern flex flex-wrap items-center justify-between gap-3 px-5 py-5 text-white sm:px-6"
+                >
+                  <div class="flex items-center gap-3">
+                    <span
+                      class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-[#ffd58d]"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        class="h-5 w-5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                      >
+                        <path
+                          d="M12 21s-8-4.6-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.4-8 11-8 11Z"
+                        />
+                        <path
+                          d="M12 8v7M8.5 11.5h7"
+                          stroke-linecap="round"
+                        /></svg
+                    ></span>
+                    <div>
+                      <p
+                        class="text-[9px] font-extrabold uppercase tracking-[.18em] text-[#f1c58b]"
+                      >
+                        Speak to God
+                      </p>
+                      <h2
+                        id="prayer-title"
+                        class="font-serif text-[29px] font-semibold leading-none"
+                      >
+                        Your prayer room
+                      </h2>
+                    </div>
+                  </div>
+                  <span
+                    class="rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-[9px] font-bold uppercase tracking-wider text-[#f6e8d8]"
+                    >Private reflection space</span
+                  >
+                </div>
+                <div class="p-4 sm:p-6">
+                  <p class="text-xs leading-5 text-bible-muted">
+                    Bring your thoughts, needs, thanksgiving and Scripture into
+                    one focused moment of prayer.
+                  </p>
+                  <div
+                    class="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4"
+                    role="group"
+                    aria-label="Prayer categories"
+                  >
+                    <button
+                      class="rounded-xl border border-[#e4cdb5] bg-[#fff4e6] px-3 py-3 text-left"
+                      type="button"
+                      data-prayer-category="Thanksgiving"
+                    >
+                      <span class="block text-lg">🙏</span
+                      ><span
+                        class="mt-1 block text-[10px] font-extrabold text-bible-brown"
+                        >Thanksgiving</span
+                      >
+                    </button>
+                    <button
+                      class="rounded-xl border border-[#eadccd] bg-white px-3 py-3 text-left hover:bg-[#fff9f1]"
+                      type="button"
+                      data-prayer-category="Family"
+                    >
+                      <span class="block text-lg">🏡</span
+                      ><span
+                        class="mt-1 block text-[10px] font-extrabold text-bible-brown"
+                        >Family</span
+                      >
+                    </button>
+                    <button
+                      class="rounded-xl border border-[#eadccd] bg-white px-3 py-3 text-left hover:bg-[#fff9f1]"
+                      type="button"
+                      data-prayer-category="Wisdom"
+                    >
+                      <span class="block text-lg">💡</span
+                      ><span
+                        class="mt-1 block text-[10px] font-extrabold text-bible-brown"
+                        >Wisdom</span
+                      >
+                    </button>
+                    <button
+                      class="rounded-xl border border-[#eadccd] bg-white px-3 py-3 text-left hover:bg-[#fff9f1]"
+                      type="button"
+                      data-prayer-category="Protection"
+                    >
+                      <span class="block text-lg">🛡️</span
+                      ><span
+                        class="mt-1 block text-[10px] font-extrabold text-bible-brown"
+                        >Protection</span
+                      >
+                    </button>
+                  </div>
+                  <form id="prayer-form" class="mt-5 space-y-3">
+                    <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                      <label class="block"
+                        ><span
+                          class="mb-1.5 block text-[10px] font-extrabold uppercase tracking-wider text-bible-muted"
+                          >Prayer focus</span
+                        ><select
+                          id="prayer-focus"
+                          name="focus"
+                          class="input-field text-xs"
+                        >
+                          <option value="personal">Personal growth</option>
+                          <option value="family">
+                            Family and relationships
+                          </option>
+                          <option value="protection">
+                            Protection and peace
+                          </option>
+                          <option value="wisdom">Wisdom and direction</option>
+                          <option value="healing">Healing and strength</option>
+                          <option value="gratitude">Thanksgiving</option>
+                          <option value="work">Work and business</option>
+                        </select></label
+                      >
+                      <label class="block"
+                        ><span
+                          class="mb-1.5 block text-[10px] font-extrabold uppercase tracking-wider text-bible-muted"
+                          >Supporting Scripture</span
+                        ><input
+                          id="prayer-reference"
+                          name="reference"
+                          class="input-field text-xs"
+                          type="text"
+                          placeholder="e.g. Psalm 91:1–4"
+                      /></label>
+                    </div>
+                    <label class="block"
+                      ><span
+                        class="mb-1.5 block text-[10px] font-extrabold uppercase tracking-wider text-bible-muted"
+                        >Your prayer / reflection</span
+                      ><textarea
+                        id="prayer-text"
+                        name="prayer"
+                        class="textarea-field text-xs leading-6"
+                        placeholder="Write what is on your heart. You can include a Scripture, a prayer request, thanksgiving or a declaration..."
+                      ></textarea>
+                    </label>
+                    <div
+                      class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
+                    >
+                      <p class="text-[10px] leading-5 text-bible-muted">
+                        Your entries can be saved to your personal journal when
+                        storage is connected.
+                      </p>
+                      <div class="flex flex-wrap gap-2">
+                        <button
+                          class="quiet-btn flex-1 sm:flex-none"
+                          type="button"
+                          data-action="clear-prayer"
+                        >
+                          Clear</button
+                        ><button
+                          class="primary-btn flex-1 sm:flex-none"
+                          type="submit"
+                          data-action="save-prayer"
+                        >
+                          <svg
+                            viewBox="0 0 24 24"
+                            class="h-4 w-4"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                          >
+                            <path d="M5 3h12l2 2v16H5z" />
+                            <path d="M8 3v6h8V3M8 21v-8h8v8" /></svg
+                          >Save prayer
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </section>
+
+              <!-- Journal -->
+              <section
+                id="journal"
+                class="surface p-4 sm:p-5"
+                aria-labelledby="journal-title"
+              >
+                <div class="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <p
+                      class="text-[10px] font-extrabold uppercase tracking-[.14em] text-[#a17c60]"
+                    >
+                      Remember what God is teaching you
+                    </p>
+                    <h2
+                      id="journal-title"
+                      class="mt-1 text-base font-extrabold text-bible-deep"
+                    >
+                      My journal
+                    </h2>
+                    <p class="mt-1 text-xs text-bible-muted">
+                      Capture a thought, a lesson, or a moment of gratitude.
+                    </p>
+                  </div>
+                  <span class="tag">Personal notes</span>
+                </div>
+                <form id="journal-form" class="mt-4 space-y-3">
+                  <input
+                    id="journal-title-input"
+                    name="title"
+                    class="input-field text-xs"
+                    type="text"
+                    placeholder="Give today's reflection a title"
+                  />
+                  <textarea
+                    id="journal-entry"
+                    name="entry"
+                    class="textarea-field !min-h-[100px] text-xs leading-6"
+                    placeholder="What stood out to you in today's reading? What will you put into practice?"
+                  ></textarea>
+                  <div
+                    class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
+                  >
+                    <label
+                      class="flex items-center gap-2 text-[10px] font-semibold text-bible-muted"
+                      ><input
+                        type="checkbox"
+                        id="journal-private"
+                        checked
+                        class="h-4 w-4 accent-[#4c3123]"
+                      />
+                      Keep this entry private</label
+                    ><button
+                      class="primary-btn w-full sm:w-auto"
+                      type="submit"
+                      data-action="save-journal"
+                    >
+                      Save journal entry
+                    </button>
+                  </div>
+                </form>
+              </section>
+            </div>
+
+            <!-- Right column -->
+            <aside
+              class="min-w-0 space-y-6"
+              aria-label="Daily inspiration and plans"
+            >
+              <!-- Daily devotion -->
+              <section
+                class="surface overflow-hidden"
+                aria-labelledby="devotional-title"
+              >
+                <div
+                  class="relative overflow-hidden bg-[#efe1d1] px-5 pb-5 pt-5"
+                >
+                  <div
+                    class="absolute -right-8 -top-10 h-36 w-36 rounded-full border-[18px] border-white/25"
+                  ></div>
+                  <div class="relative z-10">
+                    <span class="tag !border-white/60 !bg-white/60"
+                      >Today's devotion • 5 min</span
+                    >
+                    <h2
+                      id="devotional-title"
+                      class="mt-4 max-w-[250px] font-serif text-[30px] font-semibold leading-[1.02] text-bible-deep"
+                    >
+                      Stay close to the Source
+                    </h2>
+                    <p
+                      class="mt-2 max-w-[250px] text-xs leading-5 text-[#725c4b]"
+                    >
+                      Build a steady life by staying connected to God's Word.
+                    </p>
+                    <a
+                      href="#devotional-reading"
+                      class="mt-4 inline-flex min-h-[40px] items-center gap-2 rounded-full bg-bible-brown px-4 text-[11px] font-extrabold text-[#fdd9a3] hover:bg-bible-deep"
+                      >Read devotion <span aria-hidden="true">→</span></a
+                    >
+                  </div>
+                </div>
+                <div id="devotional-reading" class="p-5">
+                  <p
+                    class="text-[10px] font-extrabold uppercase tracking-[.13em] text-[#a17c60]"
+                  >
+                    Today's reflection
+                  </p>
+                  <p class="mt-2 text-xs leading-6 text-bible-muted">
+                    A strong spiritual life is formed through daily connection,
+                    not occasional effort. Return to Scripture, make space to
+                    listen, and carry one truth into the choices you make today.
+                  </p>
+                  <p
+                    class="mt-3 border-l-2 border-[#d5a56e] pl-3 font-serif text-lg italic leading-6 text-bible-brown"
+                  >
+                    “Abide in me, and I in you.”
+                  </p>
+                  <p
+                    class="mt-1 pl-3 text-[10px] font-extrabold text-[#9c6943]"
+                  >
+                    JOHN 15:4
+                  </p>
+                </div>
+              </section>
+
+              <!-- Reading plans -->
+              <section
+                id="reading-plans"
+                class="surface p-5"
+                aria-labelledby="plans-title"
+              >
+                <div class="flex items-center justify-between gap-2">
+                  <div>
+                    <p
+                      class="text-[10px] font-extrabold uppercase tracking-[.14em] text-[#a17c60]"
+                    >
+                      Grow consistently
+                    </p>
+                    <h2
+                      id="plans-title"
+                      class="mt-1 text-base font-extrabold text-bible-deep"
+                    >
+                      Reading plans
+                    </h2>
+                  </div>
+                  <a
+                    href="#all-plans"
+                    class="text-[10px] font-extrabold text-[#9a5a2f] hover:text-bible-deep"
+                    >See all</a
+                  >
+                </div>
+                <div class="mt-4 space-y-4">
+                  <article class="rounded-xl border border-[#eadccd] p-3.5">
+                    <div class="flex items-start justify-between gap-2">
+                      <div>
+                        <span class="tag">7-day plan</span>
+                        <h3 class="mt-2 text-xs font-extrabold text-bible-deep">
+                          Living in God's protection
+                        </h3>
+                        <p class="mt-1 text-[10px] text-bible-muted">
+                          Psalms and promises of safety
+                        </p>
+                      </div>
+                      <span class="text-xs font-extrabold text-[#9a5a2f]"
+                        >4/7</span
+                      >
+                    </div>
+                    <div class="progress-track mt-3">
+                      <div class="progress-fill" style="width: 57%"></div>
+                    </div>
+                    <div class="mt-3 flex items-center justify-between">
+                      <span class="text-[10px] font-semibold text-bible-muted"
+                        >4 days completed</span
+                      ><button
+                        class="text-[10px] font-extrabold text-[#9a5a2f]"
+                        type="button"
+                        data-action="continue-plan"
+                        data-plan-id="protection-7"
+                      >
+                        Continue →
+                      </button>
+                    </div>
+                  </article>
+                  <article class="rounded-xl border border-[#eadccd] p-3.5">
+                    <div class="flex items-start justify-between gap-2">
+                      <div>
+                        <span class="tag">14-day plan</span>
+                        <h3 class="mt-2 text-xs font-extrabold text-bible-deep">
+                          Wisdom for everyday life
+                        </h3>
+                        <p class="mt-1 text-[10px] text-bible-muted">
+                          A journey through Proverbs
+                        </p>
+                      </div>
+                      <span class="text-xs font-extrabold text-[#9a5a2f]"
+                        >2/14</span
+                      >
+                    </div>
+                    <div class="progress-track mt-3">
+                      <div class="progress-fill" style="width: 14%"></div>
+                    </div>
+                    <div class="mt-3 flex items-center justify-between">
+                      <span class="text-[10px] font-semibold text-bible-muted"
+                        >2 days completed</span
+                      ><button
+                        class="text-[10px] font-extrabold text-[#9a5a2f]"
+                        type="button"
+                        data-action="continue-plan"
+                        data-plan-id="wisdom-14"
+                      >
+                        Continue →
+                      </button>
+                    </div>
+                  </article>
+                </div>
+                <a
+                  id="all-plans"
+                  href="#reading-plans"
+                  class="mt-4 flex min-h-[43px] items-center justify-center rounded-xl border border-dashed border-[#cdb49b] text-[11px] font-extrabold text-bible-brown hover:bg-[#fff9f1]"
+                  >Explore all reading plans <span class="ml-2">＋</span></a
+                >
+              </section>
+
+              <!-- Weekly consistency -->
+              <section class="surface p-5" aria-labelledby="rhythm-title">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p
+                      class="text-[10px] font-extrabold uppercase tracking-[.14em] text-[#a17c60]"
+                    >
+                      Small steps matter
+                    </p>
+                    <h2
+                      id="rhythm-title"
+                      class="mt-1 text-base font-extrabold text-bible-deep"
+                    >
+                      Your weekly rhythm
+                    </h2>
+                  </div>
+                  <span class="tag">This week</span>
+                </div>
+                <div class="mt-5 grid grid-cols-7 gap-1.5 text-center">
+                  <div>
+                    <span class="block text-[9px] font-bold text-bible-muted"
+                      >M</span
+                    ><span
+                      class="mx-auto mt-2 flex h-8 w-8 items-center justify-center rounded-full bg-[#e8dccd] text-[10px] font-extrabold text-bible-brown"
+                      >✓</span
+                    >
+                  </div>
+                  <div>
+                    <span class="block text-[9px] font-bold text-bible-muted"
+                      >T</span
+                    ><span
+                      class="mx-auto mt-2 flex h-8 w-8 items-center justify-center rounded-full bg-[#e8dccd] text-[10px] font-extrabold text-bible-brown"
+                      >✓</span
+                    >
+                  </div>
+                  <div>
+                    <span class="block text-[9px] font-bold text-bible-muted"
+                      >W</span
+                    ><span
+                      class="mx-auto mt-2 flex h-8 w-8 items-center justify-center rounded-full bg-[#e8dccd] text-[10px] font-extrabold text-bible-brown"
+                      >✓</span
+                    >
+                  </div>
+                  <div>
+                    <span class="block text-[9px] font-bold text-bible-muted"
+                      >T</span
+                    ><span
+                      class="mx-auto mt-2 flex h-8 w-8 items-center justify-center rounded-full bg-[#e8dccd] text-[10px] font-extrabold text-bible-brown"
+                      >✓</span
+                    >
+                  </div>
+                  <div>
+                    <span class="block text-[9px] font-bold text-bible-muted"
+                      >F</span
+                    ><span
+                      class="mx-auto mt-2 flex h-8 w-8 items-center justify-center rounded-full bg-bible-brown text-[10px] font-extrabold text-[#fdd9a3] ring-4 ring-[#f2e4d3]"
+                      >•</span
+                    >
+                  </div>
+                  <div>
+                    <span class="block text-[9px] font-bold text-bible-muted"
+                      >S</span
+                    ><span
+                      class="mx-auto mt-2 flex h-8 w-8 items-center justify-center rounded-full border border-dashed border-[#cdb49b] text-[10px] font-bold text-[#a17c60]"
+                      >6</span
+                    >
+                  </div>
+                  <div>
+                    <span class="block text-[9px] font-bold text-bible-muted"
+                      >S</span
+                    ><span
+                      class="mx-auto mt-2 flex h-8 w-8 items-center justify-center rounded-full border border-dashed border-[#cdb49b] text-[10px] font-bold text-[#a17c60]"
+                      >7</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="mt-4 flex items-center justify-between border-t border-[#f0e6dc] pt-4"
+                >
+                  <div>
+                    <p class="text-xs font-extrabold text-bible-deep">
+                      5 of 7 days
+                    </p>
+                    <p class="mt-0.5 text-[10px] text-bible-muted">
+                      You're building a beautiful habit.
+                    </p>
+                  </div>
+                  <button
+                    class="quiet-btn !min-h-[36px] !px-3"
+                    type="button"
+                    data-action="set-reading-reminder"
+                  >
+                    Set reminder
+                  </button>
+                </div>
+              </section>
+
+              <!-- Saved verses -->
+              <section
+                id="saved"
+                class="surface p-5"
+                aria-labelledby="saved-title"
+              >
+                <div class="flex items-center justify-between gap-2">
+                  <div>
+                    <p
+                      class="text-[10px] font-extrabold uppercase tracking-[.14em] text-[#a17c60]"
+                    >
+                      Keep close
+                    </p>
+                    <h2
+                      id="saved-title"
+                      class="mt-1 text-base font-extrabold text-bible-deep"
+                    >
+                      Saved verses
+                    </h2>
+                  </div>
+                  <a
+                    href="#saved"
+                    class="text-[10px] font-extrabold text-[#9a5a2f]"
+                    >View all</a
+                  >
+                </div>
+                <div class="mt-4 rounded-xl bg-[#fff9f1] p-3.5">
+                  <p class="font-serif text-[16px] leading-6 text-bible-brown">
+                    “The LORD is my shepherd; I shall not want.”
+                  </p>
+                  <div class="mt-2 flex items-center justify-between">
+                    <span
+                      class="text-[9px] font-extrabold uppercase tracking-wider text-[#9c6943]"
+                      >Psalm 23:1</span
+                    ><button
+                      class="text-[10px] font-bold text-[#9a5a2f]"
+                      type="button"
+                      data-action="open-saved-verse"
+                      data-verse="PSA.23.1"
+                    >
+                      Open verse →
+                    </button>
+                  </div>
+                </div>
+                <div class="mt-2 rounded-xl bg-[#fff9f1] p-3.5">
+                  <p class="font-serif text-[16px] leading-6 text-bible-brown">
+                    “God is our refuge and strength, a very present help in
+                    trouble.”
+                  </p>
+                  <div class="mt-2 flex items-center justify-between">
+                    <span
+                      class="text-[9px] font-extrabold uppercase tracking-wider text-[#9c6943]"
+                      >Psalm 46:1</span
+                    ><button
+                      class="text-[10px] font-bold text-[#9a5a2f]"
+                      type="button"
+                      data-action="open-saved-verse"
+                      data-verse="PSA.46.1"
+                    >
+                      Open verse →
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Gentle daily prompt -->
+              <section class="surface-cream p-5">
+                <span class="tag !bg-white/60">A moment to reflect</span>
+                <h2
+                  class="mt-3 font-serif text-[25px] font-semibold leading-tight text-bible-deep"
+                >
+                  What is one truth you will carry into today?
+                </h2>
+                <p class="mt-2 text-xs leading-5 text-[#725c4b]">
+                  A small reflection can help you remember and live out what you
+                  have read.
+                </p>
+                <a
+                  href="#journal"
+                  class="mt-4 inline-flex items-center gap-2 text-[11px] font-extrabold text-bible-brown hover:text-[#9a5a2f]"
+                  >Write your answer <span aria-hidden="true">→</span></a
+                >
+              </section>
+            </aside>
+          </div>
+
+          <!-- Explore Scripture topics -->
+          <section class="mt-7" aria-labelledby="topics-title">
+            <div class="mb-4 flex flex-wrap items-end justify-between gap-2">
+              <div>
+                <p
+                  class="text-[10px] font-extrabold uppercase tracking-[.14em] text-[#a17c60]"
+                >
+                  Find Scripture for every season
+                </p>
+                <h2
+                  id="topics-title"
+                  class="mt-1 font-serif text-[29px] font-semibold text-bible-deep"
+                >
+                  Explore by topic
+                </h2>
+              </div>
+              <a
+                href="#discover"
+                class="text-[10px] font-extrabold text-[#9a5a2f]"
+                >Explore all topics →</a
+              >
+            </div>
+            <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-6">
+              <button
+                type="button"
+                class="surface-cream p-4 text-left transition hover:-translate-y-0.5 hover:shadow-soft"
+                data-topic="Faith"
+              >
+                <span class="text-xl">🌱</span
+                ><span
+                  class="mt-2 block text-xs font-extrabold text-bible-brown"
+                  >Faith</span
+                ><span class="mt-1 block text-[10px] text-bible-muted"
+                  >Trust and confidence</span
+                >
+              </button>
+              <button
+                type="button"
+                class="surface-cream p-4 text-left transition hover:-translate-y-0.5 hover:shadow-soft"
+                data-topic="Peace"
+              >
+                <span class="text-xl">🕊️</span
+                ><span
+                  class="mt-2 block text-xs font-extrabold text-bible-brown"
+                  >Peace</span
+                ><span class="mt-1 block text-[10px] text-bible-muted"
+                  >Rest for your heart</span
+                >
+              </button>
+              <button
+                type="button"
+                class="surface-cream p-4 text-left transition hover:-translate-y-0.5 hover:shadow-soft"
+                data-topic="Healing"
+              >
+                <span class="text-xl">🌿</span
+                ><span
+                  class="mt-2 block text-xs font-extrabold text-bible-brown"
+                  >Healing</span
+                ><span class="mt-1 block text-[10px] text-bible-muted"
+                  >Comfort and renewal</span
+                >
+              </button>
+              <button
+                type="button"
+                class="surface-cream p-4 text-left transition hover:-translate-y-0.5 hover:shadow-soft"
+                data-topic="Purpose"
+              >
+                <span class="text-xl">✨</span
+                ><span
+                  class="mt-2 block text-xs font-extrabold text-bible-brown"
+                  >Purpose</span
+                ><span class="mt-1 block text-[10px] text-bible-muted"
+                  >Direction and calling</span
+                >
+              </button>
+              <button
+                type="button"
+                class="surface-cream p-4 text-left transition hover:-translate-y-0.5 hover:shadow-soft"
+                data-topic="Family"
+              >
+                <span class="text-xl">🏡</span
+                ><span
+                  class="mt-2 block text-xs font-extrabold text-bible-brown"
+                  >Family</span
+                ><span class="mt-1 block text-[10px] text-bible-muted"
+                  >Love and relationships</span
+                >
+              </button>
+              <button
+                type="button"
+                class="surface-cream p-4 text-left transition hover:-translate-y-0.5 hover:shadow-soft"
+                data-topic="Wisdom"
+              >
+                <span class="text-xl">📖</span
+                ><span
+                  class="mt-2 block text-xs font-extrabold text-bible-brown"
+                  >Wisdom</span
+                ><span class="mt-1 block text-[10px] text-bible-muted"
+                  >Guidance for decisions</span
+                >
+              </button>
+            </div>
+          </section>
+
+          <!-- Footer -->
+          <footer class="mt-10 border-t border-[#eadccd] py-6">
+            <div
+              class="flex flex-col gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left"
+            >
+              <div>
+                <p class="font-serif text-xl font-semibold text-bible-deep">
+                  selah<span class="text-[#c35a1a]">.</span>
+                </p>
+                <p class="mt-1 text-[10px] text-bible-muted">
+                  Make room for the Word. Grow in grace, one day at a time.
+                </p>
+              </div>
+              <div
+                class="flex flex-wrap items-center justify-center gap-4 text-[10px] font-semibold text-bible-muted sm:justify-end"
+              >
+                <a href="#settings" class="hover:text-bible-brown"
+                  >Preferences</a
+                ><a href="#profile" class="hover:text-bible-brown">Privacy</a
+                ><a href="#today" class="hover:text-bible-brown"
+                  >Back to top ↑</a
+                >
+              </div>
+            </div>
+            <p class="mt-4 text-center text-[9px] text-[#a99585] sm:text-left">
+              Scripture text and translation availability depend on your
+              connected Bible provider and usage permissions.
+            </p>
+          </footer>
+        </main>
+      </div>
+    </div>
+
+    <!-- Mobile bottom navigation -->
+    <nav
+      class="mobile-bottom-nav fixed inset-x-0 bottom-0 z-50 grid grid-cols-5 border-t border-[#e7d9cb] bg-white/95 px-2 pt-2 shadow-[0_-8px_24px_rgba(40,20,10,.07)] backdrop-blur-xl lg:hidden"
+      aria-label="Mobile navigation"
+    >
+      <a href="#today" class="mobile-nav-item active" aria-current="page"
+        ><svg
+          viewBox="0 0 24 24"
+          class="h-5 w-5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+        >
+          <path
+            d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"
+            stroke-linejoin="round"
+          /></svg
+        ><span>Today</span></a
+      >
+      <a href="#read-bible" class="mobile-nav-item"
+        ><svg
+          viewBox="0 0 24 24"
+          class="h-5 w-5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+        >
+          <path
+            d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5z"
+          />
+          <path d="M4 17.5A2.5 2.5 0 0 1 6.5 15H20" /></svg
+        ><span>Bible</span></a
+      >
+      <a href="#prayer-room" class="mobile-nav-item"
+        ><svg
+          viewBox="0 0 24 24"
+          class="h-5 w-5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+        >
+          <path
+            d="M12 21s-8-4.6-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.4-8 11-8 11Z"
+          />
+          <path d="M12 8v7M8.5 11.5h7" stroke-linecap="round" /></svg
+        ><span>Pray</span></a
+      >
+      <a href="#reading-plans" class="mobile-nav-item"
+        ><svg
+          viewBox="0 0 24 24"
+          class="h-5 w-5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+        >
+          <rect x="4" y="4" width="16" height="17" rx="2" />
+          <path d="M8 2v4M16 2v4M8 10h8M8 14h5" stroke-linecap="round" /></svg
+        ><span>Plans</span></a
+      >
+      <a href="#journal" class="mobile-nav-item"
+        ><svg
+          viewBox="0 0 24 24"
+          class="h-5 w-5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+        >
+          <path
+            d="M5 3h14v18H5zM8 7h8M8 11h8M8 15h5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          /></svg
+        ><span>Journal</span></a
+      >
+    </nav>
+
+    <!--
+    JAVASCRIPT INTEGRATION HOOKS
+    This file intentionally contains no application JavaScript.
+    Suggested event hooks:
+      [data-action]             - buttons and form actions
+      [data-control]            - Bible translation, book and chapter selectors
+      [data-verse-action]       - save / pray / share an individual verse
+      [data-search-term]        - popular search shortcuts
+      [data-topic]              - Scripture topic shortcuts
+      [data-prayer-category]    - prayer category shortcuts
+      [data-plan-id]            - reading-plan continuation
+      #bible-reading-content    - render chapter or passage HTML here
+      #search-results           - render search results here
+      #prayer-form               - save prayer entries
+      #journal-form              - save journal entries
+
+    API.Bible integration reference:
+      Base URL: https://rest.api.bible/v1
+      Bible ID: a6aee10bb058511c-02
+      Verse endpoint: /bibles/{bibleId}/verses/{verseId}
+      Passage endpoint: /bibles/{bibleId}/passages/{passageId}
+    Keep the API key on a trusted backend; do not expose a production API key in
+    browser JavaScript or commit it to a public repository.
+  --></body>
+</html>
